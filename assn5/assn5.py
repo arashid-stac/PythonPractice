@@ -10,6 +10,7 @@ class Movie:
     def get_name(self):
         return self.name
 
+
     def __str__(self):
         return "{}".format(self.get_name())
 
@@ -43,15 +44,27 @@ class Movie_Store:
             if movie.get_name() == title:
                 self.movie_list.remove(movie)
 
+    def sort(self):
+        movie_list = sorted(self.movie_list, key=lambda x: x.get_name())
+        return movie_list
+
+    def print_movies(self):
+        sorted_list = self.sort()
+        for movie in sorted_list:
+            print(movie)
+
 
 
 
 m1 = Movie("Star Wars")
 m2 = Movie("Star Wars")
-print(m1 == m2)
+m3 = Movie("A Movie")
 
 ms1 = Movie_Store()
 ms1.add_movie(m1)
 ms1.add_movie(m2)
+ms1.add_movie(m3)
 ms1.remove("Star Wars")
-print(ms1.movie_list)
+#print(ms1.movie_list)
+
+ms1.print_movies()
